@@ -3,7 +3,7 @@
 INSTALL=install -o root
 
 all:
-	g++ perm.cpp -o perm
+	g++ -O3 perm.cpp -o perm
 
 install:
 	$(INSTALL) -d $(DESTDIR)/usr/bin/

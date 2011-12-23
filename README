@@ -1,0 +1,36 @@
+PERM(1)                                                                PERM(1)
+
+
+
+PERM
+       perm - print permutations
+
+SYNOPSIS
+       perm [N]
+
+DESCRIPTION
+       Print all permutations of the integers 1 to N, to standard output.
+
+       If  N  is  not  given,  print all permutations of all strings read from
+       standard input.
+
+EXAMPLES
+       $ perm 4
+       1 2 3 4
+       1 2 4 3
+       ...
+
+       $ echo "a b c" | perm
+       a b c
+       a c b
+       ...
+
+SEE ALSO
+       shuf(1)
+
+AUTHOR
+       perm was written by Bjorn Edstrom <be@bjrn.se>.
+
+
+
+                               December 23, 2011                       PERM(1)

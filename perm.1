@@ -1,0 +1,33 @@
+.\" -*- nroff -*-
+.TH PERM 1 "December 23, 2011"
+.SH PERM
+perm \- print permutations
+.SH SYNOPSIS
+.B perm
+.RI [ N ]
+.SH DESCRIPTION
+Print all permutations of the integers 1 to N, to standard output.
+.PP
+If N is not given, print all permutations of all strings read from
+standard input.
+.SH EXAMPLES
+$ perm 4
+.br
+1 2 3 4
+.br
+1 2 4 3
+.br
+.B ...
+.PP
+$ echo "a b c" | perm
+.br
+a b c
+.br
+a c b
+.br
+.B ...
+.PP
+.SH SEE ALSO
+.BR shuf (1)
+.SH AUTHOR
+perm was written by Bjorn Edstrom <be@bjrn.se>.

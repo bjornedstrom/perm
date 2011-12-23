@@ -1,0 +1,12 @@
+Source: perm
+Section: utils
+Priority: extra
+Maintainer: Björn Edström <be@bjrn.se>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.8.3
+
+Package: perm
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Utility for listing permutations.
+ Prints all permutations to standard output.

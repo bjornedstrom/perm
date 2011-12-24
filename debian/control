@@ -8,5 +8,5 @@ Standards-Version: 3.8.3
 Package: perm
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Utility for listing permutations.
+Description: Utility for printing permutations.
  Prints all permutations to standard output.

@@ -1,3 +1,11 @@
+perm (0.2.1) unstable; urgency=low
+
+  * Add -r, --reverse option.
+  * Add -z, --zero option.
+  * Release version 0.2.1.
+
+ -- Björn Edström <be@bjrn.se>  Sat, 24 Dec 2011 10:25:30 +0100
+
 perm (0.2.0) unstable; urgency=low
 
   * Add -l, --lex option.

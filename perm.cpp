@@ -19,6 +19,7 @@ Print permutations to standard output\n\
 \n\
   -l, --lex      lexicographically permute\n\
   -r, --reverse  reverse order of permutations\n\
+  -z, --zero     index at 0\n\
   -h, --help     display this help and exit\n\
   -v, --version  output version information and exit\n\
 \n\
@@ -40,6 +41,7 @@ int main(int argc, char** argv)
 {
 	bool opt_lex = false;
 	bool opt_reverse = false;
+	bool opt_zero = false;
 
 	static struct option const long_options[] =
 		{
@@ -47,17 +49,21 @@ int main(int argc, char** argv)
 			{"lex", no_argument, NULL, 'l'},
 			{"reverse", no_argument, NULL, 'r'},
 			{"version", no_argument, NULL, 'v'},
+			{"zero", no_argument, NULL, 'z'},
 			{NULL, 0, NULL, 0}
 		};
 
 	int c;
-	while ((c = getopt_long (argc, argv, "hlrv", long_options, NULL)) != -1) {
+	while ((c = getopt_long (argc, argv, "hlrvz", long_options, NULL)) != -1) {
 		switch (c) {
 		case 'l':
 			opt_lex = true;
 			break;
 		case 'r':
 			opt_reverse = true;
+			break;
+		case 'z':
+			opt_zero = true;
 			break;
 		case 'h':
 			return usage(argv[0]);
@@ -82,7 +88,7 @@ int main(int argc, char** argv)
 
 		for (int i = 1; i <= n; i++) {
 			char nums[8];
-			sprintf(nums, "%d", i);
+			sprintf(nums, "%d", opt_zero ? (i - 1) : i);
 			labels.push_back(nums);
 			idx.push_back(i - 1);
 		}

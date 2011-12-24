@@ -20,6 +20,9 @@ DESCRIPTION
        -r, --reverse
               reverse order of permutations
 
+       -z, --zero
+              index at 0
+
        --help display this help and exit
 
        --version

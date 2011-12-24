@@ -18,7 +18,8 @@ int usage(char *name)
 
 int main(int argc, char** argv)
 {
-	std::vector<std::string> ar;
+	std::vector<std::string> labels;
+	std::vector<int> idx;
 
 	if (argc == 2) {
 		int n = atoi(argv[1]);
@@ -30,24 +31,28 @@ int main(int argc, char** argv)
 		for (int i = 1; i <= n; i++) {
 			char nums[8];
 			sprintf(nums, "%d", i);
-			ar.push_back(nums);
+			labels.push_back(nums);
+			idx.push_back(i - 1);
 		}
 	} else if (argc == 1) {
 		std::string line;
+		int i = 0;
 		while (std::cin >> line) {
-			ar.push_back(line);
+			labels.push_back(line);
+			idx.push_back(i);
+			i++;
 		}
 	} else {
 		return usage(argv[0]);
 	}
 
-	size_t s = ar.size();
+	size_t s = idx.size();
 	do {
 		for (size_t i = 0; i < s; i++) {
-			printf("%s ", ar[i].c_str());
+			printf("%s ", labels[idx[i]].c_str());
 		}
 		printf("\n");
-	} while (std::next_permutation(ar.begin(), ar.end()));
+	} while (std::next_permutation(idx.begin(), idx.end()));
 
 	return 0;
 }

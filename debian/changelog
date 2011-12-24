@@ -1,3 +1,9 @@
+perm (0.1.1) unstable; urgency=low
+
+  * Always permute on indices.
+
+ -- Björn Edström <be@bjrn.se>  Sat, 24 Dec 2011 08:56:30 +0100
+
 perm (0.1.0) unstable; urgency=low
 
   * Initial Release.

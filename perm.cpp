@@ -17,11 +17,13 @@ int usage(char *name)
 	fprintf(stderr, "Usage: %s [OPTION] [N]\n\
 Print permutations to standard output\n\
 \n\
-  -l, --lex      lexicographically permute\n\
-  -r, --reverse  reverse order of permutations\n\
-  -z, --zero     index at 0\n\
-  -h, --help     display this help and exit\n\
-  -v, --version  output version information and exit\n\
+  -d, --delimiter=DELIM\n\
+                  use delimiter DELIM instead of space\n\
+  -l, --lex       lexicographically permute\n\
+  -r, --reverse   reverse order of permutations\n\
+  -z, --zero      index at 0\n\
+  -h, --help      display this help and exit\n\
+  -v, --version   output version information and exit\n\
 \n\
 See man page for more details\n\
 ",
@@ -42,9 +44,11 @@ int main(int argc, char** argv)
 	bool opt_lex = false;
 	bool opt_reverse = false;
 	bool opt_zero = false;
+	char opt_delim = ' ';
 
 	static struct option const long_options[] =
 		{
+			{"delimiter", required_argument, NULL, 'd'},
 			{"help", no_argument, NULL, 'h'},
 			{"lex", no_argument, NULL, 'l'},
 			{"reverse", no_argument, NULL, 'r'},
@@ -54,8 +58,11 @@ int main(int argc, char** argv)
 		};
 
 	int c;
-	while ((c = getopt_long (argc, argv, "hlrvz", long_options, NULL)) != -1) {
+	while ((c = getopt_long (argc, argv, "d:hlrvz", long_options, NULL)) != -1) {
 		switch (c) {
+		case 'd':
+			opt_delim = optarg[0];
+			break;
 		case 'l':
 			opt_lex = true;
 			break;
@@ -107,7 +114,7 @@ int main(int argc, char** argv)
 	size_t s = idx.size();
 
 #define PRINT_PERM(ar) for (size_t i = 0; i < s; i++) { \
-		printf("%s ", ar.c_str());		\
+		printf("%s%c", ar.c_str(), (i < (s - 1)) ? opt_delim : ' '); \
 	}						\
 	printf("\n");					\
 

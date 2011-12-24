@@ -14,6 +14,9 @@ DESCRIPTION
        If  N  is  not  given,  print all permutations of all strings read from
        standard input.
 
+       -d, --delimiter=DELIM
+              use delimiter DELIM instead of space
+
        -l, --lex
               lexicographically permute
 

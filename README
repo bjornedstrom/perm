@@ -18,7 +18,7 @@ DESCRIPTION
               use delimiter DELIM instead of space
 
        -l, --lex
-              lexicographically permute
+              lexicographically permute using current locale
 
        -r, --reverse
               reverse order of permutations
@@ -45,6 +45,11 @@ EXAMPLES
        $ echo "c a b" | perm -l
        c a b
        c b a
+
+ENVIRONMENT VARIABLES
+       LC_COLLATE (or LC_ALL) can be set to change collation  when  using  the
+       --lex  option for lexicographic permutations. The default is to use the
+       system locale
 
 SEE ALSO
        shuf(1)

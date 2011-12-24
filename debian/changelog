@@ -1,3 +1,10 @@
+perm (0.2.3) unstable; urgency=low
+
+  * Respect LC_COLLATE/LC_ALL when doing lexicographic permutations.
+  * Release version 0.2.3.
+
+ -- Björn Edström <be@bjrn.se>  Sat, 24 Dec 2011 13:19:30 +0100
+
 perm (0.2.2) unstable; urgency=low
 
   * Add -d, --delimiter option.

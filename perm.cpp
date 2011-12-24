@@ -10,7 +10,14 @@
 
 #include <getopt.h>
 
-#define VERSION "0.2.2"
+/* for setlocale */
+#include <locale.h>
+
+/* for strcoll */
+#include <string.h>
+
+
+#define VERSION "0.2.3"
 
 int usage(char *name)
 {
@@ -19,7 +26,7 @@ Print permutations to standard output\n\
 \n\
   -d, --delimiter=DELIM\n\
                   use delimiter DELIM instead of space\n\
-  -l, --lex       lexicographically permute\n\
+  -l, --lex       lexicographically permute using current locale\n\
   -r, --reverse   reverse order of permutations\n\
   -z, --zero      index at 0\n\
   -h, --help      display this help and exit\n\
@@ -39,9 +46,20 @@ int version(char *name)
 	return 1;
 }
 
+bool lex_cmp(const std::string &a, const std::string &b)
+{
+	return strcoll(a.c_str(), b.c_str()) < 1;
+}
+
 int main(int argc, char** argv)
 {
+	/* Set up locale for correct collation when doing
+	 * lexicographic permutations. */
+	setlocale (LC_ALL, "");
+
+	/* True if the permutations should be lexicographic. */
 	bool opt_lex = false;
+
 	bool opt_reverse = false;
 	bool opt_zero = false;
 	char opt_delim = ' ';
@@ -121,14 +139,14 @@ int main(int argc, char** argv)
 	// TODO (bjorn): There are nicer way to write this...
 	if (opt_lex) {
 		if (opt_reverse) {
-			std::prev_permutation(labels.begin(), labels.end());
+			std::prev_permutation(labels.begin(), labels.end(), lex_cmp);
 			do {
 				PRINT_PERM(labels[i]);
-			} while (std::prev_permutation(labels.begin(), labels.end()));
+			} while (std::prev_permutation(labels.begin(), labels.end(), lex_cmp));
 		} else {
 			do {
 				PRINT_PERM(labels[i]);
-			} while (std::next_permutation(labels.begin(), labels.end()));
+			} while (std::next_permutation(labels.begin(), labels.end(), lex_cmp));
 		}
 	} else {
 		if (opt_reverse) {

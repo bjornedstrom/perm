@@ -16,7 +16,7 @@ standard input.
 use delimiter DELIM instead of space
 .TP
 \fB\-l\fR, \fB\-\-lex\fR
-lexicographically permute
+lexicographically permute using current locale
 .TP
 \fB\-r\fR, \fB\-\-reverse\fR
 reverse order of permutations
@@ -51,6 +51,11 @@ $ echo "c a b" | perm -l
 c a b
 .br
 c b a
+.PP
+.SH ENVIRONMENT VARIABLES
+\fBLC_COLLATE\fR (or \fBLC_ALL\fR) can be set to change collation when
+using the \fB\--lex\fR option for lexicographic permutations. The
+default is to use the system locale.
 .PP
 .SH SEE ALSO
 .BR shuf (1)

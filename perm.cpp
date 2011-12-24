@@ -10,7 +10,7 @@
 
 #include <getopt.h>
 
-#define VERSION "0.2.1"
+#define VERSION "0.2.2"
 
 int usage(char *name)
 {
@@ -89,7 +89,7 @@ int main(int argc, char** argv)
 	if (optind + 1 == argc) {
 		int n = atoi(argv[optind]);
 
-		if (n <= 0 || n > 10000) {
+		if (n <= 0 || n > 65536) {
 			return usage(argv[0]);
 		}
 

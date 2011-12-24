@@ -17,7 +17,7 @@ int usage(char *name)
 	fprintf(stderr, "Usage: %s [OPTION] [N]\n\
 Print permutations to standard output\n\
 \n\
-  -l, --lex      lexigraphically permute\n\
+  -l, --lex      lexicographically permute\n\
   -h, --help     display this help and exit\n\
   -v, --version  output version information and exit\n\
 \n\

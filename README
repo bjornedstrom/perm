@@ -15,7 +15,7 @@ DESCRIPTION
        standard input.
 
        -l, --lex
-              lexigraphically permute
+              lexicographically permute
 
        --help display this help and exit
 

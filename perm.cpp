@@ -18,6 +18,7 @@ int usage(char *name)
 Print permutations to standard output\n\
 \n\
   -l, --lex      lexicographically permute\n\
+  -r, --reverse  reverse order of permutations\n\
   -h, --help     display this help and exit\n\
   -v, --version  output version information and exit\n\
 \n\
@@ -38,20 +39,25 @@ int version(char *name)
 int main(int argc, char** argv)
 {
 	bool opt_lex = false;
+	bool opt_reverse = false;
 
 	static struct option const long_options[] =
 		{
 			{"help", no_argument, NULL, 'h'},
 			{"lex", no_argument, NULL, 'l'},
+			{"reverse", no_argument, NULL, 'r'},
 			{"version", no_argument, NULL, 'v'},
 			{NULL, 0, NULL, 0}
 		};
 
 	int c;
-	while ((c = getopt_long (argc, argv, "hlv", long_options, NULL)) != -1) {
+	while ((c = getopt_long (argc, argv, "hlrv", long_options, NULL)) != -1) {
 		switch (c) {
 		case 'l':
 			opt_lex = true;
+			break;
+		case 'r':
+			opt_reverse = true;
 			break;
 		case 'h':
 			return usage(argv[0]);
@@ -94,20 +100,34 @@ int main(int argc, char** argv)
 
 	size_t s = idx.size();
 
+#define PRINT_PERM(ar) for (size_t i = 0; i < s; i++) { \
+		printf("%s ", ar.c_str());		\
+	}						\
+	printf("\n");					\
+
+	// TODO (bjorn): There are nicer way to write this...
 	if (opt_lex) {
-		do {
-			for (size_t i = 0; i < s; i++) {
-				printf("%s ", labels[i].c_str());
-			}
-			printf("\n");
-		} while (std::next_permutation(labels.begin(), labels.end()));
+		if (opt_reverse) {
+			std::prev_permutation(labels.begin(), labels.end());
+			do {
+				PRINT_PERM(labels[i]);
+			} while (std::prev_permutation(labels.begin(), labels.end()));
+		} else {
+			do {
+				PRINT_PERM(labels[i]);
+			} while (std::next_permutation(labels.begin(), labels.end()));
+		}
 	} else {
-		do {
-			for (size_t i = 0; i < s; i++) {
-				printf("%s ", labels[idx[i]].c_str());
-			}
-			printf("\n");
-		} while (std::next_permutation(idx.begin(), idx.end()));
+		if (opt_reverse) {
+			std::prev_permutation(idx.begin(), idx.end());
+			do {
+				PRINT_PERM(labels[idx[i]]);
+			} while (std::prev_permutation(idx.begin(), idx.end()));
+		} else {
+			do {
+				PRINT_PERM(labels[idx[i]]);
+			} while (std::next_permutation(idx.begin(), idx.end()));
+		}
 	}
 
 	return 0;

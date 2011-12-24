@@ -17,6 +17,9 @@ DESCRIPTION
        -l, --lex
               lexicographically permute
 
+       -r, --reverse
+              reverse order of permutations
+
        --help display this help and exit
 
        --version

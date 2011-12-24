@@ -1,15 +1,25 @@
 .\" -*- nroff -*-
-.TH PERM 1 "December 23, 2011"
+.TH PERM 1 "December 24, 2011"
 .SH PERM
 perm \- print permutations
 .SH SYNOPSIS
 .B perm
+.RI [ OPTIONS ]
 .RI [ N ]
 .SH DESCRIPTION
 Print all permutations of the integers 1 to N, to standard output.
 .PP
 If N is not given, print all permutations of all strings read from
 standard input.
+.TP
+\fB\-l\fR, \fB\-\-lex\fR
+lexigraphically permute
+.TP
+\fB\-\-help\fR
+display this help and exit
+.TP
+\fB\-\-version\fR
+output version information and exit
 .SH EXAMPLES
 $ perm 4
 .br
@@ -26,6 +36,12 @@ a b c
 a c b
 .br
 .B ...
+.PP
+$ echo "c a b" | perm -l
+.br
+c a b
+.br
+c b a
 .PP
 .SH SEE ALSO
 .BR shuf (1)

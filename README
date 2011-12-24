@@ -2,35 +2,47 @@ PERM(1)                                                                PERM(1)
 
 
 
-PERM
+PPEERRMM
        perm - print permutations
 
-SYNOPSIS
-       perm [N]
+SSYYNNOOPPSSIISS
+       ppeerrmm [_O_P_T_I_O_N_S] [_N]
 
-DESCRIPTION
+DDEESSCCRRIIPPTTIIOONN
        Print all permutations of the integers 1 to N, to standard output.
 
        If  N  is  not  given,  print all permutations of all strings read from
        standard input.
 
-EXAMPLES
+       --ll, ----lleexx
+              lexigraphically permute
+
+       ----hheellpp display this help and exit
+
+       ----vveerrssiioonn
+              output version information and exit
+
+EEXXAAMMPPLLEESS
        $ perm 4
        1 2 3 4
        1 2 4 3
-       ...
+       ......
 
        $ echo "a b c" | perm
        a b c
        a c b
-       ...
+       ......
 
-SEE ALSO
-       shuf(1)
+       $ echo "c a b" | perm -l
+       c a b
+       c b a
 
-AUTHOR
+SSEEEE AALLSSOO
+       sshhuuff(1)
+
+AAUUTTHHOORR
        perm was written by Bjorn Edstrom <be@bjrn.se>.
 
 
 
-                               December 23, 2011                       PERM(1)
+                               December 24, 2011                       PERM(1)

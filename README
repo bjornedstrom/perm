@@ -49,7 +49,10 @@ EXAMPLES
 ENVIRONMENT VARIABLES
        LC_COLLATE (or LC_ALL) can be set to change collation  when  using  the
        --lex  option for lexicographic permutations. The default is to use the
-       system locale
+       system locale.
+
+       Set LC_ALL=C to get the traditional sort order that  uses  native  byte
+       values.
 
 SEE ALSO
        shuf(1)
